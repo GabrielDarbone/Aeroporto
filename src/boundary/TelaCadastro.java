@@ -1,7 +1,5 @@
 package boundary;
 
-import javax.swing.event.HyperlinkEvent.EventType;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,10 +10,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
-	private GridPane gp = new GridPane();
+
 
 	@Override
 	public Pane gerarTela() {
+		
+		GridPane gp = new GridPane();
+		Button btnCadastro = new Button("Cadastrar");
 
 		TextField txtNome = new TextField();
 		TextField txtSobrenome = new TextField();
@@ -26,7 +27,7 @@ public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
 		TextField txtNumero = new TextField();
 		TextField txtBairro = new TextField();
 		TextField txtCep = new TextField();
-		Button btnCadastro = new Button("Cadastrar");
+		
 		gp.setPadding(new Insets(60, 105, 10, 70));
 		gp.setVgap(2);
 		gp.setHgap(5);
@@ -48,16 +49,16 @@ public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
 		gp.add(txtBairro, 1, 15);
 		gp.add(new Label("Cep"), 1, 16);
 		gp.add(txtCep, 1, 17);
-		btnCadastro.setOnAction(this);
 		gp.add(btnCadastro, 1, 22);
 
+		btnCadastro.setOnAction(this);
+		
 		return gp;
 
 	}
 
 	@Override
-	public void handle(ActionEvent arg0) {
-		TelaPrincipal sb = new TelaPrincipal();
-		sb.trocarTela("cadast");
+	public void handle(ActionEvent e) {
+		
 	}
 }
