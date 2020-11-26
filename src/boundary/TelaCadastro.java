@@ -6,15 +6,20 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
+public class TelaCadastro extends TelaMaeDog
+				implements SubTela, EventHandler<ActionEvent> {
 
 
 	@Override
 	public Pane gerarTela() {
 		
+		// Pane Principal - Retorno
+		BorderPane telaPrincipal = new BorderPane();
+				
 		GridPane gp = new GridPane();
 		Button btnCadastro = new Button("Cadastrar");
 
@@ -53,12 +58,22 @@ public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
 
 		btnCadastro.setOnAction(this);
 		
-		return gp;
+		telaPrincipal.setLeft(super.gerarTelaEsq());
+		telaPrincipal.setRight(gp);
+		
+		return telaPrincipal;
 
 	}
 
 	@Override
-	public void handle(ActionEvent e) {
-		
+	public Pane criarTela() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	@Override
+	public void handle(ActionEvent e) {
+			
+	}
+
 }

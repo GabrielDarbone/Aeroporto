@@ -4,6 +4,7 @@ import javafx.scene.layout.Pane;
 
 public interface SubTela {
 	
+	public Pane criarTela();
 	public Pane gerarTela();	
 	
 }
