@@ -1,6 +1,7 @@
 package boundary;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -42,20 +43,13 @@ public class TelaPrincipal extends Application{
 
 	private TelaControle tControl = new TelaControle();
 	
-	static private BorderPane telaPrincipal = new BorderPane();
-
-	private Button btnVoltar = new Button("Voltar");
-
-	static public void setTelaPrincipal(BorderPane novaTela) {
-		telaPrincipal = novaTela;
-	}
+	private static BorderPane telaPrincipal = new BorderPane();
 
 	@Override
 	public void start(Stage stage) {
-		tControl.trocarTela("TelaLogin");
-		
 		Scene scn = new Scene(telaPrincipal, 1150, 600);
-		
+
+		tControl.trocarTela("TelaLogin");
 		
 		Image icon = new Image("cachorro-viajando-de-aviao.png");
 		stage.getIcons().add(icon);
@@ -65,6 +59,9 @@ public class TelaPrincipal extends Application{
 		stage.show();
 	}
 	
+	public static void setTelaPrincipal(BorderPane novaTela) {
+		telaPrincipal.setCenter(novaTela);
+	}
 	
 	public static void main(String[] args) {
 		Application.launch(TelaPrincipal.class, args);

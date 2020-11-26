@@ -73,7 +73,8 @@ public class TelaCadastro extends TelaMaeDog
 	
 	@Override
 	public void handle(ActionEvent e) {
-			
+		TelaControle tControl = new TelaControle();
+		tControl.trocarTela("TelaMenuCliente");
 	}
 
 }
