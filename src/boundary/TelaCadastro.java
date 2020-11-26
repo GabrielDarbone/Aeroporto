@@ -1,21 +1,27 @@
 package boundary;
 
-import javax.swing.event.HyperlinkEvent.EventType;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
-	private GridPane gp = new GridPane();
+public class TelaCadastro extends TelaMaeDog
+				implements SubTela, EventHandler<ActionEvent> {
+
 
 	@Override
 	public Pane gerarTela() {
+		
+		// Pane Principal - Retorno
+		BorderPane telaPrincipal = new BorderPane();
+				
+		GridPane gp = new GridPane();
+		Button btnCadastro = new Button("Cadastrar");
 
 		TextField txtNome = new TextField();
 		TextField txtSobrenome = new TextField();
@@ -26,7 +32,7 @@ public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
 		TextField txtNumero = new TextField();
 		TextField txtBairro = new TextField();
 		TextField txtCep = new TextField();
-		Button btnCadastro = new Button("Cadastrar");
+		
 		gp.setPadding(new Insets(60, 105, 10, 70));
 		gp.setVgap(2);
 		gp.setHgap(5);
@@ -48,16 +54,26 @@ public class TelaCadastro implements SubTela, EventHandler<ActionEvent> {
 		gp.add(txtBairro, 1, 15);
 		gp.add(new Label("Cep"), 1, 16);
 		gp.add(txtCep, 1, 17);
-		btnCadastro.setOnAction(this);
 		gp.add(btnCadastro, 1, 22);
 
-		return gp;
+		btnCadastro.setOnAction(this);
+		
+		telaPrincipal.setLeft(super.gerarTelaEsq());
+		telaPrincipal.setRight(gp);
+		
+		return telaPrincipal;
 
 	}
 
 	@Override
-	public void handle(ActionEvent arg0) {
-		TelaPrincipal sb = new TelaPrincipal();
-		sb.trocarTela("cadast");
+	public Pane criarTela() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	@Override
+	public void handle(ActionEvent e) {
+			
+	}
+
 }
